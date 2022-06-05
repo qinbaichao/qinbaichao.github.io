@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div class="post">
+  <header class="article-header">
+    <h1 class="article-title">
+      <a href="{{ page.url }}">{{ page.title }}</a>
+    </h1>
+    <div class="meta">
+      <span class="muted layui-icon layui-icon-template-1" title="分类">
+        {% if page.categories.size == 0 %} {% assign category = "未分类" %} {%
+        else %} {% assign category = page.categories[0] %} {% endif %}
+        <a id="_post_category" href="/category.html?category={{ category }}" category="{{page.categories | join: ' '}}">{{ category }}</a>
+      </span>
+      <span class="muted layui-icon layui-icon-friends" title="作者">
+          {% assign author = site.author %}
+          {% if page.author %}
+            {% assign author = page.author %}
+          {% endif %}
+        <a href="{{ author.url }}" title="{{ author.name }}"> {{ author.name }} </a>
+      </span>
+      <span class="muted layui-icon layui-icon-time" title="发布时间">
+        {{ page.date | date: "%Y-%m-%d" }}
+      </span>
+      {% if page.update %}
+        <span class="muted layui-icon layui-icon-date" title="更新日期">
+            {{ page.update | date: "%Y-%m-%d" }}
+        </span>
+      {% endif %}
+      <!-- <span class="muted layui-icon layui-icon-user" title="阅读人数">
+        
+      </span> -->
+    </div>
+  </header>
+  <article class="article-content">
+    {{ content }}
+  </article>
+  {% assign showCopyright = true %}
+  {% for category in page.categories %}
+    {% if category == "转载" %}
+      {% assign showCopyright = false %}
+    {% endif %}
+  {% endfor %}
+  {% if showCopyright == true %}
+    <div class="post-copyright">
+      如未加特殊说明，此网站文章均为原创，转载必须注明出处。
+      <a href="{{ author.url }}">{{ author.name }}</a>
+      »
+      <a href="{{ page.url }}">{{ page.title }}</a>
+    </div>
+  {% endif %}
+  <div class="article-tags">
+    {% if page.tags.size > 0 %} 标签： {% for tag in page.tags %}
+    <a href="/tag.html?tag={{ tag }}" rel="tag">{{ tag }} </a>
+    {% endfor %} {% endif %}
+  </div>
+  <nav class="article-nav">
+    {% if page.previous %}
+      <span class="article-nav-prev">
+        上一篇<br />
+        <a href="{{ page.previous.url }}" title="{{ page.previous.title }}" rel="prev">{{page.previous.title}}</a>
+      </span>
+    {% endif %}
+    {% if page.next %}
+      <span class="article-nav-next">
+        下一篇<br />
+        <a href="{{ page.next.url }}" title="{{ page.next.title }}" rel="next">{{page.next.title}}</a>
+      </span>
+    {% endif %}
+  </nav>
+</div>

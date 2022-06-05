@@ -1,0 +1,31 @@
+<footer class="footer">
+        <!-- MY JS -->
+        <script src="{{ site.baseurl }}/assets/js/common.js"></script>
+        <!-- JS set in layout -->
+        {% for javascript in layout.javascript %}
+        <script
+          src="stylesheet"
+          href="{{ site.baseurl }}/assets/js/{{ javascript }}"
+        ></script>
+        {% endfor %}
+      
+        <!-- JS set in page -->
+        {% for javascript in page.javascript %}
+        <script src="{{ site.baseurl }}/assets/js/{{ javascript }}"></script>
+        {% endfor %}
+        <div class="footer-inner">
+          <div class="copyright">
+            &copy;{{ site.time | date: '%Y' }}
+            <a href="/" style="color:#06c;" home"="">Baichao</a>
+          </div>
+        </div>
+      </footer>
+<script>
+  layui.use("util", function() {
+    var util = layui.util;
+    //执行
+    util.fixbar({
+      bar1: false,
+    });
+  });
+</script>

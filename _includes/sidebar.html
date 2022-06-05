@@ -1,0 +1,90 @@
+<div class="sidebar">
+  <aside class="widget">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">公众号</li>
+      </ul>
+      <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show" title="公众号">
+            {% assign author = site.author %}
+            <img style="display: block;margin: 0 auto;" src="{{author.wechat}}" alt="公众号">
+        </div>
+      </div>
+    </div>
+  </aside>
+  <aside class="widget widget-tags">
+    <div class="layui-tab">
+      <ul class="layui-tab-title" isCategory="{{page.isCategory}}">
+          {% if page.isCategory %}
+            <li>标签</li>
+            <li class="layui-this">分类</li> 
+          {% else %} 
+            <li class="layui-this">标签</li>
+            <li >分类</li>
+          {% endif %}
+      </ul>
+      <div class="layui-tab-content">
+        <div class="layui-tab-item {% if page.isCategory != true %} layui-show {% endif %}">
+            <div class="items">
+                {% for tag in site.tags %}
+                    <a href="/tag.html?tag={{ tag[0] }}" data="{{ tag[0] }}" title="{{ tag[0] }}">
+                        {{tag[0]}} ({{tag[1].size}})
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="layui-tab-item {% if page.isCategory %} layui-show {% endif %}">
+            <div class="items">
+                {% for category in site.categories %}
+                    <a href="/category.html?category={{category[0]}}" title="{{category[0]}}">
+                        {{category[0]}} ({{category[1].size}})
+                    </a>
+                {% endfor %}
+
+                {% for post in site.posts %}
+                  {% if post.categories.size == 0 %}
+                    {% assign unCategory = unCategory | plus: 1 %}
+                  {% endif %}
+                {% endfor %}
+                {% if unCategory > 0 %}
+                <a href="/category.html?category=未分类">
+                  未分类 ({{unCategory}})
+              </a>
+                {% endif %}
+              </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <aside class="widget widget_recent_entries">
+    <div class="layui-card">
+      <div class="layui-card-header">最新文章</div>
+      <div class="layui-card-body">
+        <ul>
+          {% for post in site.posts limit:10 %} 
+            <li>
+                <a href="{{ post.url }}"  title="{{ post.title }}">
+                    <span class="text">{{ post.title }}</span>
+                    <span class="muted">{{ post.date | date: "%Y-%m-%d" }}</span>
+                </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <aside class="widget widget-links">
+    <div class="layui-card">
+      <div class="layui-card-header">友情链接</div>
+      <div class="layui-card-body">
+          <ul>
+              <li>
+                {% for link in site.data.links %}
+                    <a href="{{ link.url }}" title="{{ link.name}}">{{ link.name}}</a>
+                {% endfor %}
+              </li>
+          </ul>
+      </div>
+    </div>
+  </aside>
+</div>

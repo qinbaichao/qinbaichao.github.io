@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<div class="index">
+  {{content}}
+  {% for post in site.posts %}
+  {% if post.categories.size == 0 %}
+    {% assign category = "未分类" %}
+    {% assign categories = "未分类" %}
+  {% else %}
+    {% assign category = post.categories[0] %}
+    {% assign categories = post.categories | join: ' ' %}
+  {% endif %}
+    <article class="excerpt {{ page.class }}" tag="{{ post.tags | join: ' ' }}" category="{{ categories }}">
+      <div class="picture">
+        <a href="{{post.url}}">
+          <img class="thumb" src=" {{post.image_url}} " alt=" {{post.title}} "/>
+        </a>
+      </div>
+      <header>
+          
+          <a id="category"class="layui-category" href="/category.html?category={{ category }}"> {{ category }} </a>
+        <h2>
+          <a id="_post_list_category" href=" {{post.url}}?category={{ category }}" title="{{post.title}}"> {{post.title}} </a>
+        </h2>
+      </header>
+      <p class="meta">
+        <span class="muted layui-icon layui-icon-friends" title="作者">
+            {% assign author = site.author %}
+            {% if post.author %}
+              {% assign author = post.author %}
+            {% endif %}
+          <a href="{{author.url}}"> {{author.name}} </a>
+        </span>
+        <span class="muted layui-icon layui-icon-time" title="发布时间">
+            {{ post.date | date: "%Y-%m-%d" }}
+        </span>
+        <!-- <span class="muted layui-icon layui-icon-user" title="阅读人数">0</span> -->
+      </p>
+      <!-- <p class="note">{{ post.excerpt | strip_html }}</p> -->
+      <p class="note">{{ post.content | strip_html | strip_newlines | truncate: 250 }}</p>
+    </article>
+  {% endfor %}
+</div>

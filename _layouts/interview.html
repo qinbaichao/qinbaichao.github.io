@@ -1,0 +1,38 @@
+---
+layout: default
+title: 面经
+---
+
+<div class="catleader {{ page.class }}">
+    <h1>关于面经栏目</h1>
+    <div class="catleader-desc">
+        创建这个栏目的初衷是收集并记录一些博主认为值得收藏的面经，方便时不时查阅，但有几点要说明的：
+        <br/>
+        1、大部分面经整理自网络，一般都会注明来源，如有侵权，可以联系我删除。
+        <br/>
+        2、博主仅仅是收集记录，不对面经的真实性、质量负责，面经中的观点也不代表博主的观点。
+        <br/>
+        3、每个人接触的信息面都有限，如果你有面经资源愿意分享，欢迎联系博主。
+    </div>
+</div>
+<div class="interview">
+    <ul>
+        {% for category in site.categories %}
+            {% if category[0] == "面经" %}
+                {% for post in category[1] %}
+                    <li>
+                        {% assign author = site.author %}
+                        {% if post.author %}
+                            {% assign author = post.author %}
+                        {% endif %}
+                        <a href="{{post.url}}?category=面经" title="{{post.title}}">
+                            <span class="text"><h2>{{post.title}}</h2></span>
+                            <span class="muted">{{author.name}}</span>
+                            <span class="muted">{{ post.date | date: "%Y-%m-%d" }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

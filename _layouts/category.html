@@ -1,0 +1,15 @@
+---
+layout: post_list
+isCategory: true #是否是分类页
+---
+
+{% for category in site.categories %}
+<div class="catleader {{ page.class }}" category="{{ category[0] }}">
+    <h1>{{ category[0] }}</h1>
+    <div class="catleader-desc"></div>
+</div>
+{% endfor %}
+<div class="catleader {{ page.class }}" category="未分类">
+    <h1>未分类</h1>
+    <div class="catleader-desc"></div>
+</div>
