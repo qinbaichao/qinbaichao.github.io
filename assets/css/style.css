@@ -497,7 +497,7 @@ section.layui-container {
 }
 .article-content ul,
 .article-content ol {
-  margin: 0 0 20px 50px;
+  margin: 0 0 20px 20px;
 }
 .article-content ul {
   list-style: disc;
