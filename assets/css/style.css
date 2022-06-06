@@ -65,6 +65,7 @@ a.logo:hover {
   border-left: 2px solid #eaeaea;
   margin-left: 10px;
   height: 40px;
+  font-weight: 700;
 }
 .header .layui-nav {
   float: right;
@@ -804,6 +805,10 @@ section.layui-container {
   .show-search.show-carousel.layui-container {
     margin-top: 385px;
   }
+  /* 隐藏标签分类、最新文章 */
+  .widget.widget-tags, .widget.widget_recent_entries {
+    display: none;
+  }
 }
 @media screen and (max-width: 600px) {
   .note {
@@ -878,8 +883,8 @@ section.layui-container {
   .motto {
     position: absolute;
     border: none;
-    margin-top: 21px;
     margin-left: 58px;
+    line-height: 86px;
   }
   /* 显示图片的情况下隐藏更新日期 */
   .show-picture .layui-icon.layui-icon-date,
@@ -889,6 +894,18 @@ section.layui-container {
   .article-tags {
     text-align: center;
   }
+  .header .layui-container {
+    height: 70px;
+  }
+  .nav-button {
+    line-height: 70px;
+  }
+  .logo {
+    line-height: 55px;
+  }
+  .logo .layui-nav-img {
+    top: 5px;
+  }
 }
 @media screen and (max-width: 979px) {
   .footer-inner {
@@ -897,4 +914,8 @@ section.layui-container {
 }
 .hide {
   display: none;
+}
+/* 备案信息 */
+.beian {
+  color: hsla(0,0%,100%,.5);
 }
