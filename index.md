@@ -1,4 +1,4 @@
 ---
 layout: post_list
-title: 个人博客
+title: Baichao's Blog
 ---
