@@ -370,7 +370,7 @@ section.layui-container {
 }
 .layui-category {
   color: #fff;
-  background-color: #45bcf9;
+  background-color: rgb(239, 112, 96);
   padding: 3px 6px;
   font-size: 12px;
   display: inline-block;
@@ -393,7 +393,7 @@ section.layui-container {
   width: 0;
   height: 0;
   vertical-align: middle;
-  border-left: 4px solid #45bcf9;
+  border-left: 4px solid rgb(239, 112, 96);
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
 }
@@ -477,15 +477,43 @@ section.layui-container {
 .article-content h1,
 .article-content h2 {
   font-weight: bold;
-  margin: 20px 0;
   padding-bottom: 10px;
+  background: rgb(239, 112, 96);
+  position: relative;
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  padding: 3px 10px 1px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  margin-right: 3px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 1.3em;
 }
-.article-content h1 {
-  font-size: 20px;
+.article-content h2::before{
+  content: "";
+  position: absolute;
+  right: -23px;
+  display: inline-block;
+  vertical-align: bottom;
+  border-bottom: 36px solid #efebe9;
+  border-right: 20px solid transparent;
+  bottom: 0;
 }
-.article-content h2 {
-  font-size: 18px;
+/* 实现下划线 */
+.article-content h2 + p {
+  position: relative;
 }
+.article-content h2 + p::before {
+  content: "";
+  position: absolute;
+  border-bottom: 2px solid rgb(239, 112, 96);
+  left: 0;
+  top: -19px;
+  height: 0;
+  width: 100%;
+}
+
 .article-content h3 {
   font-size: 16px;
 }
