@@ -70,6 +70,9 @@ a.logo:hover {
 .header .layui-nav {
   float: right;
 }
+#closeButton {
+  display: none;
+}
 .nav-button {
   position: absolute;
   font-size: 26px;
@@ -744,9 +747,33 @@ section.layui-container {
     transition: all 0.3s;
     z-index: 1000;
     display: none;
+    padding: 24px;
+    overflow: auto;
+    font-size: 14px;
+    line-height: 1.5715;
+    word-wrap: break-word;
+
   }
   .layui-nav.layui-nav-tree.layui-nav-side {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    background-clip: padding-box;
+    width: 100%;
+  }
+  .layui-nav.layui-nav-tree .layui-nav-item a {
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
     display: block;
+    box-sizing: border-box;
+    width: 100%;
+    text-decoration: none;
+    line-height: unset;
+    height: unset;
+    color: #262626;
   }
   .layui-nav.layui-nav-tree .layui-nav-child dd.layui-this,
   .layui-nav.layui-nav-tree .layui-nav-child dd.layui-this a,
@@ -754,8 +781,24 @@ section.layui-container {
   .layui-nav.layui-nav-tree .layui-this > a,
   .layui-nav.layui-nav-tree .layui-this > a:hover {
     background-color: unset;
-    font-weight: bold;
+    color: #37597d;
+    text-decoration: underline;
   }
+  .layui-nav.layui-nav-tree .layui-nav-item {
+    line-height: unset;
+  }
+  #closeButton {
+    position: absolute;
+    font-size: 24px;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    color: rgba(0,0,0,.45);
+    font-weight: 700;
+  }
+
   .layui-nav.layui-nav-tree .layui-nav-bar {
     width: 0;
   }

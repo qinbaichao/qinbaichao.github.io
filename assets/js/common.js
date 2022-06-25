@@ -91,7 +91,7 @@ layui.use(["element", "form", "jquery"], function() {
     $(this).removeClass("layui-icon-spread-left");
     $(this).addClass("layui-icon-shrink-right");
   });
-  $(".nav-mask").on("click", function(e) {
+  $("#closeButton").on("click", function(e) {
     //隐藏mask层和左侧栏导航栏
     $("body").removeClass("m-nav-show");
     var navButton = $(".nav-button");

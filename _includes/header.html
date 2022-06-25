@@ -5,6 +5,7 @@
       <img src="{{author.logo}}" class="layui-nav-img" />{{author.name}}</a>
     <div class="motto">{{author.motto}}</div>
     <ul class="layui-nav layui-bg-white">
+      <i id="closeButton" class="layui-icon layui-icon-close"></i>
       {% for item in site.data.navigation %}
         <li class="layui-nav-item {% if page.url == item.link %}layui-this{% endif %}">
           <a href="{{ item.link }}">{{ item.name }}</a>
@@ -13,5 +14,4 @@
     </ul>
     <i class="layui-icon layui-icon-spread-left nav-button"></i>
   </div>
-  <div class="nav-mask"></div>
 </header>
